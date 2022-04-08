@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Book = ({title, subtitle, authors, thumb}) => {
+export const Book = ({title, subtitle, authors=["Unknown"], thumb}) => {
     
 
     return (

@@ -2,14 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { Book } from '../Book';
 import axios from 'axios';
 
-export const BookContainer = ({query="harry potter"}) => {
+export const BookContainer = ({query="Flowers"}) => {
     const [ books, setBooks ] = useState([]);
 
     useEffect(() => {
         const fetchBooks = async() => {
             try {
-                const results = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=AIzaSyCdt820PXnobrUy4z0geOeLJGqIkYxI9Eg`);
-                setBooks(results.data.items);
+                const results = await axios.get(`http://localhost:3000/books/${query}`);
+                console.log(results.data.Items);
+                setBooks(results.data.Items);
             } catch(err) {
                 console.log(err);
             }
@@ -18,10 +19,10 @@ export const BookContainer = ({query="harry potter"}) => {
     },[query])
 
     const renderBooks = () => books.map((r, i) => <Book key={i} 
-                                                        title={r.volumeInfo.title}
-                                                        subtitle={r.volumeInfo.subtitle} 
-                                                        authors={r.volumeInfo.authors}
-                                                        thumb={r.volumeInfo.imageLinks.smallThumbnail}/>)
+                                                        title={r.title}
+                                                        subtitle={r.subtitle} 
+                                                        authors={r.authors}
+                                                        thumb={r.imageLinks.smallThumbnail}/>)
 
     return (
         <article>

@@ -21,14 +21,15 @@ export const SearchForm = () => {
   return (
 
     <>
-        <h1>Warking sir</h1>
+        
 
         <form action=""
-            onChange={handleInput}
+            onSubmit={handleFormSubmit}
             id="SearchForm"
         >
             <input 
                 type="text" 
+                onChange={handleInput}
                 name="booksTitle" 
                 id="booksTitle" 
                 value={formData}

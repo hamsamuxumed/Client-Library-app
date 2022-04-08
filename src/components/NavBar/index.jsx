@@ -1,6 +1,7 @@
 import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import {CreateBookForm} from '../CreateBookForm'
 
 export const NavBar = () => {
   return (
@@ -13,7 +14,7 @@ export const NavBar = () => {
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="me-auto"></Nav>
               <Nav>
-                <Nav.Link as={Link} to={"/"} href="#deets">
+                <Nav.Link as={Link} to={"/"}>
                   Home
                 </Nav.Link>
                 <Nav.Link as={Link} to={"/CreateBookForm"}>
@@ -29,9 +30,9 @@ export const NavBar = () => {
       </div>
       <div>
         <Routes>
-          {/* <Route exact path="/" element={<Home/>}/>
+          {/* <Route exact path="/" element={<Home/>}/> */}
           <Route path="/CreateBookForm" element={<CreateBookForm/>}/>
-          <Route path="/Collection" element={<Collection/>}/> */}
+          {/* <Route path="/Collection" element={<Collection/>}/> */}
         </Routes>
       </div>
     </Router>

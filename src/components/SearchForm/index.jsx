@@ -25,11 +25,25 @@ export const SearchForm = () => {
 
         <form action=""
             onChange={handleInput}
-
+            id="SearchForm"
         >
-            <BookContainer data={booksTitle}/>
+            <input 
+                type="text" 
+                name="booksTitle" 
+                id="booksTitle" 
+                value={formData}
+                placeholder="Search for books"
+            />
+            <button
+                type="submit"
+                id="SubmitButton"
+            >
+                Search
+            </button>
 
+        
         </form>
+    {/* <BookContainer data={booksTitle}/> */}
     </>
   )
 }

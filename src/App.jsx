@@ -1,6 +1,7 @@
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react'
-import {NavBar,SearchForm } from './components';
+import {NavBar,SearchForm} from './components';
 
 
 const App = () => {

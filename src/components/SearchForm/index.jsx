@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { BookContainer } from '..';
 
 
 export const SearchForm = () => {
@@ -8,14 +9,13 @@ export const SearchForm = () => {
 
 
     const handleInput = e => {
-        setInput(e.target.value)
+        setFormData(e.target.value);
     }
 
     const handleFormSubmit = e => {
         e.preventDefault();
-        setBooksTitle(setInput)
-
-
+        setBooksTitle(formData);
+        setFormData('');
     }
 
   return (
@@ -23,7 +23,11 @@ export const SearchForm = () => {
     <>
         <h1>Warking sir</h1>
 
-        <form action="">
+        <form action=""
+            onChange={handleInput}
+
+        >
+            <BookContainer data={booksTitle}/>
 
         </form>
     </>

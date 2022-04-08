@@ -8,7 +8,7 @@ export const BookContainer = ({query="harry potter"}) => {
     useEffect(() => {
         const fetchBooks = async() => {
             try {
-                const results = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=AIzaSyCdt820PXnobrUy4z0geOeLJGqIkYxI9Eg`);
+                const results = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=`);
                 setBooks(results.data.items);
             } catch(err) {
                 console.log(err);

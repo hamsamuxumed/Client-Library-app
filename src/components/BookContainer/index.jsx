@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Book } from '../Book';
 import axios from 'axios';
+import './style.css';
 
 export const BookContainer = ({query="The"}) => {
     const [ books, setBooks ] = useState([]);
@@ -25,7 +26,7 @@ export const BookContainer = ({query="The"}) => {
                                                         thumb={r.imageLinks.smallThumbnail}/>)
 
     return (
-        <article>
+        <article className='bookDisplay'>
             {renderBooks()}
         </article>
     )

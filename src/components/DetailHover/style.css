@@ -1,0 +1,9 @@
+.detailPopup {
+    position: absolute;
+    background-color: white;
+    left: 50%;
+    transform: translate(-50%);
+    border: 3px solid #26A69A;
+    padding: 20px;
+    box-shadow: 5px 5px 20px grey;
+}

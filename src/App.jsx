@@ -4,11 +4,11 @@ import React from 'react'
 import {NavBar,SearchForm} from './components';
 
 
+
 const App = () => {
   return (
     <div>
-      <NavBar />
-      <SearchForm />
+      <NavBar /> 
     </div>
   )
 }

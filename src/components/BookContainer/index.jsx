@@ -9,7 +9,6 @@ export const BookContainer = ({query="The"}) => {
         const fetchBooks = async() => {
             try {
                 const results = await axios.get(`http://localhost:3000/books/${query}`);
-                console.log(results.data.Items);
                 setBooks(results.data.Items);
             } catch(err) {
                 console.log(err);
@@ -19,6 +18,7 @@ export const BookContainer = ({query="The"}) => {
     },[query])
 
     const renderBooks = () => books.map((r, i) => <Book key={i} 
+                                                        id={r.id}
                                                         title={r.title}
                                                         subtitle={r.subtitle} 
                                                         authors={r.authors}

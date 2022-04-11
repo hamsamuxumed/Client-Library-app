@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Book } from '../Book';
 import axios from 'axios';
 
-export const BookContainer = ({query="Flowers"}) => {
+export const BookContainer = ({query="The"}) => {
     const [ books, setBooks ] = useState([]);
 
     useEffect(() => {

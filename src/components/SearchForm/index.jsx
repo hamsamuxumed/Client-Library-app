@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { BookContainer } from '..';
+import './style.css'
 
 
 export const SearchForm = () => {
@@ -25,7 +26,7 @@ export const SearchForm = () => {
 
         <form action=""
             onSubmit={handleFormSubmit}
-            id="SearchForm"
+            id="searchForm"
         >
             <input 
                 type="text" 
@@ -44,7 +45,7 @@ export const SearchForm = () => {
 
         
         </form>
-        <BookContainer data={booksTitle}/>
+        <BookContainer query={booksTitle}/>
     </>
   )
 }

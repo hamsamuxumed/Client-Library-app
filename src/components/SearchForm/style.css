@@ -1,0 +1,30 @@
+#searchForm {
+    padding: 50px 0px 50px 0px;
+    margin-bottom: 50px;
+    text-align: center;
+    background-color: lightgray;
+}
+
+#searchForm > input, #searchForm > button {
+    border-radius: 5px;
+    border: 3px solid #26A69A;
+    padding: 8px;
+}
+
+#searchForm > input {
+    margin-right: 20px;
+    width: 20%;
+    font-size: 1.2em;
+}
+
+#searchForm > button {
+    background-color: #26A69A;
+    color: white;
+    font-size: 1.2em;
+    width: 10%;
+}
+
+#searchForm > button:hover, #searchForm > button:hover {
+    background-color: #038578;
+}
+

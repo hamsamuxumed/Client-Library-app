@@ -4,7 +4,9 @@ import Grid from "@mui/material/Grid";
 import "bootstrap/dist/css/bootstrap.min.css";
 import './style.css';
 
+
 export const SearchForm = () => {
+  const [show,setShow] = useState(false);
   const [booksTitle, setBooksTitle] = useState("");
   const [formData, setFormData] = useState("");
   const book1 = "https://i.guim.co.uk/img/media/1d4b16d4c6703e9bec9174f1cadc278026de0647/0_75_1280_768/master/1280.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=d036928c5974e9e8bfd87be5dcf37dd7"
@@ -18,29 +20,36 @@ export const SearchForm = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     setBooksTitle(formData);
+    setShow(true);
     setFormData("");
+
   };
 
   return (
     <>
-    <div className="d-flex align-items-center justify-content-center text-center mt-5 p-3" >
-      <form action="" onSubmit={handleFormSubmit} id="SearchForm">
-        <input
-        //   type="text"
-          onChange={handleInput}
-          name="booksTitle"
-          id="booksTitle"
-          value={formData}
-          placeholder="Search for books"
-          type="search"
+      <form action=""
+          onSubmit={handleFormSubmit}
+          id="searchForm"
+      >
+        <input 
+            type="text" 
+            onChange={handleInput}
+            name="booksTitle" 
+            id="booksTitle" 
+            value={formData}
+            placeholder="Search for books"
         />
-        <button type="submit" id="SubmitButton">
-          Search
+        <button
+            type="submit"
+            id="SubmitButton"
+        >
+            Search
         </button>
       </form>
-      </div>
 
-      <Grid container spacing={12}  direction="row"
+
+     
+      {show ? <BookContainer query={booksTitle}/> :  <Grid container spacing={12}  direction="row"
   alignItems="center"
   justifyContent="center"
   style={{ minHeight: '100vh' }}>
@@ -55,9 +64,7 @@ export const SearchForm = () => {
           <PreviewBooks image={book2} title="Robin Steven Books" desc="Stevens's eleven book series Murder Most Unladylike consists of schoolgirl detectives, Hazel Wong and Daisy Wells, as they solve murders, as well as personal things. Hazel falls in love with American boy Alexander Arcardy, as Daisy struggles with her feelings for other girls. She eventually comes out to Hazel as she falls for Martita Torrera in book seven, Death In The Spotlight, and begins a relationship with Amina from Deepdean during 'Death Sets Sail. As well as ten full-length murder mysteries, there are also six mini mysteries featuring these characters." />
         </Grid>
        
-      </Grid>
-
-      <BookContainer data={booksTitle} />
+      </Grid>}
     </>
   );
 };

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Book } from '../Book';
 import axios from 'axios';
 import '../BookContainer/style.css';
+const host = "http://ec2-52-87-178-79.compute-1.amazonaws.com:3000/books";
 
 export const Collection = ({query="The"}) => {
     const [ books, setBooks ] = useState([]);
@@ -9,7 +10,7 @@ export const Collection = ({query="The"}) => {
     useEffect(() => {
         const fetchBooks = async() => {
             try {
-                const results = await axios.get(`http://localhost:3000/books/${query}`);
+                const results = await axios.get(`${host}/${query}`);
                 setBooks(results.data.Items);
             } catch(err) {
                 console.log(err);

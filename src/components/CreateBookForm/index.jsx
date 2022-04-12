@@ -3,7 +3,7 @@ import { Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./BookForm.css";
 import { v1 as uuidv1 } from "uuid";
-const host = "http://localhost:3000";
+const host = "http://ec2-52-87-178-79.compute-1.amazonaws.com:3000/books";
 
 export const CreateBookForm = () => {
   const [formData, setFormData] = useState({

@@ -31,6 +31,7 @@ export const NavBar = () => {
           </Container>
         </Navbar>
       </div>
+      
       <div>
         <Routes>
           <Route exact path="/" element={<SearchForm />}/>

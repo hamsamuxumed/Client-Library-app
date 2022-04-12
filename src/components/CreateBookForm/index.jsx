@@ -106,7 +106,7 @@ export const CreateBookForm = () => {
                 className="submit-button btn btn-secondary "
                 type="submit"
                 value="Submit"
-                style={{ backgroundColor: "#26A69A" }}
+                style={{ backgroundColor: "#26A69A",width:"120px",height:"40px" }}
               />
             </div>
           </div>

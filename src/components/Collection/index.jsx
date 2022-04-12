@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Book } from '../Book';
 import axios from 'axios';
-import './style.css';
+import '../BookContainer/style.css';
 
-export const BookContainer = ({query="The"}) => {
-
+export const Collection = ({query="The"}) => {
     const [ books, setBooks ] = useState([]);
-    
 
     useEffect(() => {
         const fetchBooks = async() => {
@@ -18,16 +16,14 @@ export const BookContainer = ({query="The"}) => {
             }
         } 
         fetchBooks();
-    },[query])
+    },[])
 
     const renderBooks = () => books.map((r, i) => <Book key={i} 
                                                         id={r.id}
                                                         title={r.title}
                                                         subtitle={r.subtitle} 
                                                         authors={r.authors}
-                                                        date={r.publishedDate}
-                                                        available={r.allowAnonLogging}
-                                                        thumb = { r.imageLinks.smallThumbnail} />)
+                                                        thumb={r.imageLinks.smallThumbnail}/>)
 
     return (
         <article className='bookDisplay'>

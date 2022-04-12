@@ -1,7 +1,7 @@
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react'
-import {NavBar,SearchForm} from './components';
+import {NavBar} from './components';
 
 
 

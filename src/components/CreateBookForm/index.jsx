@@ -103,10 +103,10 @@ export const CreateBookForm = () => {
 
             <div className="form-button d-flex align-items-center justify-content-center text-center p-2">
               <input
-                className="submit-button btn btn-secondary"
+                className="submit-button btn btn-secondary "
                 type="submit"
                 value="Submit"
-                style={{ backgroundColor: "#26A69A" }}
+                style={{ backgroundColor: "#26A69A",width:"120px",height:"40px" }}
               />
             </div>
           </div>

@@ -3,7 +3,7 @@ import { Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./BookForm.css";
 import { v1 as uuidv1 } from "uuid";
-const host = "http://ec2-52-87-178-79.compute-1.amazonaws.com:3000/books";
+const host = "http://ec2-52-87-178-79.compute-1.amazonaws.com:3000";
 
 export const CreateBookForm = () => {
   const [formData, setFormData] = useState({
@@ -11,7 +11,7 @@ export const CreateBookForm = () => {
     title: "",
     description: "",
     author: "",
-    publish_date: "",
+    publishedDate: "",
     imageLinks:{
       thumbnail: "https://images-na.ssl-images-amazon.com/images/I/51598ZdtO1S._SX394_BO1,204,203,200_.jpg",
       smallThumbnail: "https://images-na.ssl-images-amazon.com/images/I/51598ZdtO1S._SX394_BO1,204,203,200_.jpg"
@@ -90,7 +90,7 @@ export const CreateBookForm = () => {
                 name="author"
                 value={formData.author}
                 onChange={handleChange}
-                required
+            
               />
               <Form.Control.Feedback type="invalid">
                 Please enter a valid Author's name.
@@ -100,8 +100,8 @@ export const CreateBookForm = () => {
               <Form.Label>Publish Date:</Form.Label>
               <Form.Control
                 type="date"
-                name="publish_date"
-                value={formData.publish_date}
+                name="publishedDate"
+                value={formData.publishedDate}
                 onChange={handleChange}
               />
               <Form.Control.Feedback type="invalid">

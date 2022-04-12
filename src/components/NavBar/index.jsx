@@ -3,7 +3,7 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import {CreateBookForm} from '../CreateBookForm'
 import { SearchForm } from "../SearchForm";
-import { BookContainer } from "../BookContainer";
+import { Collection } from "..";
 
 
 export const NavBar = () => {
@@ -35,7 +35,7 @@ export const NavBar = () => {
         <Routes>
           <Route exact path="/" element={<SearchForm />}/>
           <Route path="/CreateBookForm" element={<CreateBookForm/>}/>
-          <Route path="/Collection" element={<BookContainer/>}/>
+          <Route path="/Collection" element={<Collection />}/>
         </Routes>
       </div>
     </Router>

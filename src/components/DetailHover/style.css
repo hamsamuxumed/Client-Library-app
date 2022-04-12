@@ -6,4 +6,33 @@
     border: 3px solid #26A69A;
     padding: 20px;
     box-shadow: 5px 5px 20px grey;
+    max-width: 40%;
+}
+
+.popupTitle {
+    font-size: 1.5em;
+}
+
+.popupAuthors {
+    font-weight: bold;
+}
+
+.popupAuthors, .popupSubtitle {
+    font-size: 1.2em;
+}
+
+.popupDate {
+    font-size: 1em;
+}
+
+.available {
+    color: darkgreen;
+}
+
+.reserved {
+    color: darkred;
+}
+
+.popupThumb {
+    height: 205px;
 }

@@ -24,6 +24,8 @@ export const BookContainer = ({query="The"}) => {
                                                         title={r.title}
                                                         subtitle={r.subtitle} 
                                                         authors={r.authors}
+                                                        date={r.publishedDate}
+                                                        available={r.allowAnonLogging}
                                                         thumb={r.imageLinks.smallThumbnail}/>)
 
     return (

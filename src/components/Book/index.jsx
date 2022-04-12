@@ -3,7 +3,7 @@ import { DeleteBook } from "../index";
 import { DetailHover } from "../index";
 import './style.css';
 
-export const Book = ({id, title, subtitle, authors=["Unknown"], thumb}) => {
+export const Book = ({id, title, subtitle, authors=["Unknown"], date, available, thumb}) => {
     const [ details, setDetails ] = useState(false);
 
     const checkTitleLength = () => {
@@ -20,7 +20,7 @@ export const Book = ({id, title, subtitle, authors=["Unknown"], thumb}) => {
 
     return (
         <section className="bookListing" onClick={handleClick}>
-            {details && <DetailHover title={title} subtitle={subtitle} authors={authors} thumb={thumb} display={true}/>}
+            {details && <DetailHover title={title} subtitle={subtitle} date={date} available={available} authors={authors} thumb={thumb} display={true}/>}
             <img className="bookThumb" src={thumb} alt={title}></img>
             <h2 className="bookTitle">{checkTitleLength()}</h2>
             <h3 className="bookSubtitle">{subtitle}</h3>

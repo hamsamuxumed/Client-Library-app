@@ -10,7 +10,7 @@ export const CreateBookForm = () => {
     id: uuidv1(),
     title: "",
     description: "",
-    author: "",
+    authors: [],
     publishedDate: "",
     imageLinks:{
       thumbnail: "https://images-na.ssl-images-amazon.com/images/I/51598ZdtO1S._SX394_BO1,204,203,200_.jpg",
@@ -18,7 +18,7 @@ export const CreateBookForm = () => {
     }
   });
 
-
+  const handleAuthor = (e) => setFormData((data) => ({ ...data, authors: [e.target.value]}));
   const handleChange = (e) =>
     setFormData((data) => ({ ...data, [e.target.name]: e.target.value }));
 
@@ -87,9 +87,9 @@ export const CreateBookForm = () => {
               <Form.Label>Author</Form.Label>
               <Form.Control
                 type="text"
-                name="author"
-                value={formData.author}
-                onChange={handleChange}
+                name="authors"
+                value={formData.authors}
+                onChange={handleAuthor}
             
               />
               <Form.Control.Feedback type="invalid">

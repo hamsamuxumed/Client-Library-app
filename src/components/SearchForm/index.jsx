@@ -4,6 +4,7 @@ import Grid from "@mui/material/Grid";
 import "bootstrap/dist/css/bootstrap.min.css";
 import './style.css';
 
+
 export const SearchForm = () => {
   const [booksTitle, setBooksTitle] = useState("");
   const [formData, setFormData] = useState("");
@@ -23,22 +24,26 @@ export const SearchForm = () => {
 
   return (
     <>
-    <div className="d-flex align-items-center justify-content-center text-center mt-5 p-3" >
-      <form action="" onSubmit={handleFormSubmit} id="SearchForm">
-        <input
-        //   type="text"
-          onChange={handleInput}
-          name="booksTitle"
-          id="booksTitle"
-          value={formData}
-          placeholder="Search for books"
-          type="search"
+      <form action=""
+          onSubmit={handleFormSubmit}
+          id="searchForm"
+      >
+        <input 
+            type="text" 
+            onChange={handleInput}
+            name="booksTitle" 
+            id="booksTitle" 
+            value={formData}
+            placeholder="Search for books"
         />
-        <button type="submit" id="SubmitButton">
-          Search
+        <button
+            type="submit"
+            id="SubmitButton"
+        >
+            Search
         </button>
       </form>
-      </div>
+
 
       <Grid container spacing={12}  direction="row"
   alignItems="center"
@@ -56,8 +61,7 @@ export const SearchForm = () => {
         </Grid>
        
       </Grid>
-
-      <BookContainer data={booksTitle} />
+      <BookContainer query={booksTitle}/>
     </>
   );
 };

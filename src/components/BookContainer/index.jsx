@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Book } from '../Book';
 import axios from 'axios';
+import './style.css';
 
 export const BookContainer = ({query="The"}) => {
+
     const [ books, setBooks ] = useState([]);
 
     useEffect(() => {
@@ -22,10 +24,12 @@ export const BookContainer = ({query="The"}) => {
                                                         title={r.title}
                                                         subtitle={r.subtitle} 
                                                         authors={r.authors}
+                                                        date={r.publishedDate}
+                                                        available={r.allowAnonLogging}
                                                         thumb={r.imageLinks.smallThumbnail}/>)
 
     return (
-        <article>
+        <article className='bookDisplay'>
             {renderBooks()}
         </article>
     )

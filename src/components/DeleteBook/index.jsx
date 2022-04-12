@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import axios from 'axios';
+import { FaTrash } from 'react-icons/fa';
+import './style.css';
+
 
 export const DeleteBook = ({id}) => {
     
@@ -13,6 +16,6 @@ export const DeleteBook = ({id}) => {
     }
 
     return (
-        <button onClick={handleClick}>X</button>
+        <button className="deleteButton" onClick={handleClick}><FaTrash /></button>
     )
 }

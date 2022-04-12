@@ -1,0 +1,16 @@
+.bookListing{
+    text-align: center;
+}
+
+.bookThumb{
+    height: 205px;
+}
+
+.bookTitle{
+    font-size: 1.5em;
+    color: #546E7A;
+}
+
+.bookSubtitle{
+    font-size: 1.2em;
+}

@@ -23,7 +23,7 @@ export const NavBar = () => {
                 <Nav.Link as={Link} to={"/CreateBookForm"}>
                   Add Book
                 </Nav.Link>
-                <Nav.Link as={Link} to={"/BookContainer"}>
+                <Nav.Link as={Link} to={"/Collection"}>
                   Collection
                 </Nav.Link>
               </Nav>
@@ -35,7 +35,7 @@ export const NavBar = () => {
         <Routes>
           <Route exact path="/" element={<SearchForm />}/>
           <Route path="/CreateBookForm" element={<CreateBookForm/>}/>
-          <Route path="/BookContainer" element={<BookContainer/>}/>
+          <Route path="/Collection" element={<BookContainer/>}/>
         </Routes>
       </div>
     </Router>

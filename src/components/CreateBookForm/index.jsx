@@ -10,15 +10,23 @@ export const CreateBookForm = () => {
     id: uuidv1(),
     title: "",
     description: "",
-    author: "",
+    authors: [],
     publish_date: "",
+    imageLinks: {
+      thumbnail: "http://books.google.com/books/content?id=URFbEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      smallThumbnail: "http://books.google.com/books/content?id=URFbEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    }
   });
+
+  const handleAuthor = (e) => 
+    setFormData((data) => ({ ...data, authors: [e.target.value]}));
 
   const handleChange = (e) =>
     setFormData((data) => ({ ...data, [e.target.name]: e.target.value }));
 
   const onSubmit = async (e) => {
     try {
+      console.log(formData)
       e.preventDefault();
       const options = {
         method: "POST",
@@ -79,9 +87,9 @@ export const CreateBookForm = () => {
               <Form.Label>Author</Form.Label>
               <Form.Control
                 type="text"
-                name="author"
-                value={formData.author}
-                onChange={handleChange}
+                name="authors"
+                value={formData.authors}
+                onChange={handleAuthor}
                 required
               />
               <Form.Control.Feedback type="invalid">

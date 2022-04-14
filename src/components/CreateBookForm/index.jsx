@@ -10,15 +10,23 @@ export const CreateBookForm = () => {
     id: uuidv1(),
     title: "",
     description: "",
-    author: "",
+    authors: [],
     publish_date: "",
+    imageLinks: {
+      thumbnail: "http://books.google.com/books/content?id=URFbEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      smallThumbnail: "http://books.google.com/books/content?id=URFbEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    }
   });
+
+  const handleAuthor = (e) => 
+    setFormData((data) => ({ ...data, authors: [e.target.value]}));
 
   const handleChange = (e) =>
     setFormData((data) => ({ ...data, [e.target.name]: e.target.value }));
 
   const onSubmit = async (e) => {
     try {
+      console.log(formData)
       e.preventDefault();
       const options = {
         method: "POST",
@@ -30,6 +38,8 @@ export const CreateBookForm = () => {
         body: JSON.stringify(formData),
       };
       await fetch(`${host}/Books`, options);
+  
+      window.location.href='http://localhost:8080'
     } catch (err) {
       console.log(err);
     }
@@ -42,12 +52,13 @@ export const CreateBookForm = () => {
       <div className="d-flex align-items-center justify-content-center text-center p-2 ">
         <Form
           className="book-form"
+          id = "book-form"
           onSubmit={(e) => {
             onSubmit(e);
           }}
         >
           <div className="form-fields-container d-flex flex-column justify-content-start align-center m-2">
-            <Form.Group className="form-block">
+            <Form.Group className="form-block" >
               <Form.Label>Title:</Form.Label>
               <Form.Control
                 type="text"
@@ -79,9 +90,9 @@ export const CreateBookForm = () => {
               <Form.Label>Author</Form.Label>
               <Form.Control
                 type="text"
-                name="author"
-                value={formData.author}
-                onChange={handleChange}
+                name="authors"
+                value={formData.authors}
+                onChange={handleAuthor}
                 required
               />
               <Form.Control.Feedback type="invalid">
@@ -107,6 +118,7 @@ export const CreateBookForm = () => {
                 type="submit"
                 value="Submit"
                 style={{ backgroundColor: "#26A69A",width:"120px",height:"40px" }}
+                
               />
             </div>
           </div>

@@ -12,6 +12,7 @@ export const CreateBookForm = () => {
     description: "",
     authors: [],
     publish_date: "",
+<<<<<<< HEAD
     imageLinks: {
       thumbnail: "http://books.google.com/books/content?id=URFbEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
       smallThumbnail: "http://books.google.com/books/content?id=URFbEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
@@ -20,6 +21,14 @@ export const CreateBookForm = () => {
 
   const handleAuthor = (e) => 
     setFormData((data) => ({ ...data, authors: [e.target.value]}));
+=======
+    imageLinks:{
+      thumbnail: "https://images-na.ssl-images-amazon.com/images/I/51598ZdtO1S._SX394_BO1,204,203,200_.jpg",
+      smallThumbnail: "https://images-na.ssl-images-amazon.com/images/I/51598ZdtO1S._SX394_BO1,204,203,200_.jpg"
+    }
+  });
+
+>>>>>>> 5d70b6c2c6d2a491a3626d2ac40792d02d22cb71
 
   const handleChange = (e) =>
     setFormData((data) => ({ ...data, [e.target.name]: e.target.value }));
@@ -38,6 +47,8 @@ export const CreateBookForm = () => {
         body: JSON.stringify(formData),
       };
       await fetch(`${host}/Books`, options);
+  
+      window.location.href='http://localhost:8080'
     } catch (err) {
       console.log(err);
     }
@@ -50,12 +61,13 @@ export const CreateBookForm = () => {
       <div className="d-flex align-items-center justify-content-center text-center p-2 ">
         <Form
           className="book-form"
+          id = "book-form"
           onSubmit={(e) => {
             onSubmit(e);
           }}
         >
           <div className="form-fields-container d-flex flex-column justify-content-start align-center m-2">
-            <Form.Group className="form-block">
+            <Form.Group className="form-block" >
               <Form.Label>Title:</Form.Label>
               <Form.Control
                 type="text"
@@ -115,6 +127,7 @@ export const CreateBookForm = () => {
                 type="submit"
                 value="Submit"
                 style={{ backgroundColor: "#26A69A",width:"120px",height:"40px" }}
+                
               />
             </div>
           </div>

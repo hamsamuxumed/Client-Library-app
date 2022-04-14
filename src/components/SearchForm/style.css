@@ -23,7 +23,7 @@
     width: 10%;
 }
 
-#searchForm > button:hover, #searchForm > button:hover {
+#searchForm > button:hover, #searchForm > button:active {
     background-color: #038578;
 }
 

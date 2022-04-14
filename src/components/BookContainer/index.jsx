@@ -25,7 +25,7 @@ export const BookContainer = ({query="The"}) => {
                                                         subtitle={r.subtitle} 
                                                         authors={r.authors}
                                                         date={r.publishedDate}
-                                                        available={r.allowAnonLogging}
+                                                        reserved={r.reserved}
                                                         thumb={r.imageLinks.smallThumbnail}/>)
 
     return (

@@ -5,5 +5,6 @@ export { BookContainer } from './BookContainer';
 export { DeleteBook } from './DeleteBook';
 export { PreviewBooks } from './PreviewBooks'
 export { DetailHover } from './DetailHover';
+export { ReserveButton } from './ReserveButton';
 
 

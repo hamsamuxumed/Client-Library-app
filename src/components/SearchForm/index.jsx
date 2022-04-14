@@ -61,7 +61,7 @@ export const SearchForm = () => {
         </Grid>
        
       </Grid>
-      <BookContainer query={booksTitle}/>
+      {booksTitle ? <BookContainer query={booksTitle}/> : <BookContainer />}
     </>
   );
 };

@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import {CreateBookForm} from '../CreateBookForm'
 import { SearchForm } from "../SearchForm";
 import { BookContainer } from "../BookContainer";
-
+import { Login } from "../Login";
 
 export const NavBar = () => {
   return (
@@ -26,6 +26,9 @@ export const NavBar = () => {
                 <Nav.Link as={Link} to={"/Collection"}>
                   Collection
                 </Nav.Link>
+                <Nav.Link as={Link} to={"/Login"}>
+                  Login
+                </Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Container>
@@ -36,6 +39,7 @@ export const NavBar = () => {
           <Route exact path="/" element={<SearchForm />}/>
           <Route path="/CreateBookForm" element={<CreateBookForm/>}/>
           <Route path="/Collection" element={<BookContainer/>}/>
+          <Route path="/Login" element={<Login/>}/>
         </Routes>
       </div>
     </Router>

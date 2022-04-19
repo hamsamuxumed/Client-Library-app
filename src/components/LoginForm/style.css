@@ -1,0 +1,37 @@
+.regLoginForm {
+    width: 20%;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+}
+
+.regLoginForm input {
+    display: block;
+    width: 100%;
+    border: 2px solid #26A69A;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+
+.regLoginForm input[type='submit']{
+    background-color: #26A69A;
+    color: #fff;
+    font-size: 1.2em;
+}
+
+.regLoginForm input[type='submit']:hover{
+    background-color: #26A69A;
+    color: #fff;
+    cursor: pointer;
+}
+
+#loginErrorMessage {
+    text-align: center;
+    color: darkred;
+}
+
+@media only screen and (max-width: 450px) {
+    .regLoginForm {
+        width: 90%;
+    }
+}

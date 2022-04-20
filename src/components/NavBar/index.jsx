@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import {CreateBookForm} from '../CreateBookForm'
@@ -7,12 +7,32 @@ import { BookContainer } from "../BookContainer";
 import { Login } from "../Login";
 
 export const NavBar = () => {
+
+  const [ logged, setLogged ] = useState(false);
+
+  useEffect(() => {
+
+    const checkLogin = () => {
+  
+      if(localStorage.getItem('fname')){
+        setLogged(true);
+      }
+      
+    }
+    checkLogin();
+  },[])
+
+  const formatName = () => {
+    let foundName = localStorage.getItem('fname');
+    return foundName[0].toUpperCase() + foundName.slice(1);
+  }
+
   return (
     <Router>
       <div>
         <Navbar collapseOnSelect expand="lg" variant="dark" style={{ backgroundColor: "#26A69A" }}>
           <Container>
-            <Navbar.Brand href="#home">Library</Navbar.Brand>
+            { logged ? <Navbar.Brand href="#home">{`Library - Welcome ${formatName()}`}</Navbar.Brand> :  <Navbar.Brand href="#home">Library</Navbar.Brand>}
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="me-auto"></Nav>

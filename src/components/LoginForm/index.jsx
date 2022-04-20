@@ -5,15 +5,19 @@ import './style.css';
 
 export const LoginForm = () => {
     const [login, setLogin] = useState(false);
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
     const navigate = useNavigate();
+    const [formData, setFormData] = useState({
+        email: "",
+        password: ""
+    });
+
+    localStorage.getItem('token') && navigate('/');
 
     const tryLogin = (data) => {
         const decodedToken = jwt_decode(data.token);
         localStorage.setItem('fname', decodedToken.fname);
         localStorage.setItem('token', data.token);
-        navigate('/');
+        window.location.reload();
     }
 
     useEffect(() => {
@@ -22,7 +26,7 @@ export const LoginForm = () => {
                 try {
                     let response = await fetch(`http://localhost:3000/login`, {
                         method: "POST",
-                        body: JSON.stringify({email: email.toLowerCase(), password: password}),
+                        body: JSON.stringify({formData}),
                         headers: {"Content-type": "application/json; charset=UTF-8"}
                     });
                     let jsonResponse = await response.json();
@@ -36,12 +40,8 @@ export const LoginForm = () => {
         }
     },[login])
 
-    const handleUser = (e) => {
-        setEmail(e.target.value);
-    }
-
-    const handlePass = (e) => {
-        setPassword(e.target.value);
+    const handleInput = (e) => {
+        setFormData((data) => ({ ...data, [e.target.name]: e.target.value }));
     }
 
     const handleSubmit = (e) => {
@@ -54,9 +54,9 @@ export const LoginForm = () => {
             <h2 className='formHeader'>Sign-in to an account</h2>
             <form className='regLoginForm' onSubmit={handleSubmit}>
                 <label htmlFor='email'>Email</label>
-                <input type='text' name='email' onChange={handleUser}/>
+                <input type='text' name='email' onChange={handleInput}/>
                 <label htmlFor='password'>Password</label>
-                <input type='password' name='password' onChange={handlePass}/>
+                <input type='password' name='password' onChange={handleInput}/>
                 <input type='submit'/>
             </form>
         </>

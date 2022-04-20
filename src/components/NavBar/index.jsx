@@ -27,6 +27,12 @@ export const NavBar = () => {
     return foundName[0].toUpperCase() + foundName.slice(1);
   }
 
+  const logOut = () => {
+    localStorage.removeItem('fname');
+    localStorage.removeItem('token');
+    setLogged(false);
+  }
+
   return (
     <Router>
       <div>
@@ -46,9 +52,13 @@ export const NavBar = () => {
                 <Nav.Link as={Link} to={"/Collection"}>
                   Collection
                 </Nav.Link>
-                <Nav.Link as={Link} to={"/Login"}>
+                {!logged ? <Nav.Link as={Link} to={"/Login"}>
                   Login
+                </Nav.Link> :
+                <Nav.Link as={Link} onClick={logOut} to={"/Login"}>
+                  Logout
                 </Nav.Link>
+                }
               </Nav>
             </Navbar.Collapse>
           </Container>

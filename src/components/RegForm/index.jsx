@@ -17,13 +17,14 @@ export const RegForm = () => {
         confirm: ""
     });
     
+    localStorage.getItem('token') && navigate('/');
 
     const tryLogin = (data) => {
         console.log(data)
         const decodedToken = jwt_decode(data.token);
         localStorage.setItem('fname', decodedToken.fname);
         localStorage.setItem('token', data.token);
-        navigate('/');
+        window.location.reload();
     }
 
     useEffect(() => {

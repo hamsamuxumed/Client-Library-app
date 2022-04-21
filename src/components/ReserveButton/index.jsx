@@ -6,7 +6,10 @@ export const ReserveButton = ({id}) => {
 
     const handleClick = async() => {
         try {
-            await axios.patch(`http://localhost:3000/books/${id}`, {reserved: true});
+            await axios.patch(`http://localhost:3000/books/${id}`, {
+                reserved: true,
+                reserved_by: `${localStorage.getItem('fname')} ${localStorage.getItem('lname')}`
+            });
             window.location.reload();
         } catch(err) {
             console.log(err);

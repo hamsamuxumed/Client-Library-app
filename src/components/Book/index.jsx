@@ -22,8 +22,10 @@ export const Book = ({id, title, subtitle, authors=["Unknown"], date, reserved, 
 
     useEffect(() => {
         const checkRole = () => {
-            const decodedToken = jwt_decode(localStorage.getItem('token'));
-            decodedToken.role === 'librarian' && setRole(true);
+            if(localStorage.getItem('token')){
+                const decodedToken = jwt_decode(localStorage.getItem('token'));
+                decodedToken.role === 'librarian' && setRole(true);
+            }
         }
     
         checkRole();

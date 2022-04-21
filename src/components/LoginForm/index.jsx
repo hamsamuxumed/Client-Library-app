@@ -16,6 +16,7 @@ export const LoginForm = () => {
     const tryLogin = (data) => {
         const decodedToken = jwt_decode(data.token);
         localStorage.setItem('fname', decodedToken.fname);
+        localStorage.setItem('lname', decodedToken.lname);
         localStorage.setItem('token', data.token);
         window.location.reload();
     }

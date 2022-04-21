@@ -1,11 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
+import jwt_decode from 'jwt-decode';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./BookForm.css";
 import { v1 as uuidv1 } from "uuid";
 const host = "http://localhost:3000";
 
 export const CreateBookForm = () => {
+  const [ libRole, setLibRole ] = useState(false);
+
+  useEffect(() => {
+    const checkRole = () => {
+        if(localStorage.getItem('token')){
+            const decodedToken = jwt_decode(localStorage.getItem('token'));
+            decodedToken.role === 'librarian' && setLibRole(true);
+        }
+    }
+
+    checkRole();
+},[])
+
   const [formData, setFormData] = useState({
     id: uuidv1(),
     title: "",
@@ -25,23 +39,27 @@ export const CreateBookForm = () => {
     setFormData((data) => ({ ...data, [e.target.name]: e.target.value }));
 
   const onSubmit = async (e) => {
-    try {
-      console.log(formData)
-      e.preventDefault();
-      const options = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-        mode: "cors",
-        body: JSON.stringify(formData),
-      };
-      await fetch(`${host}/Books`, options);
-  
-      window.location.href='http://localhost:8080'
-    } catch (err) {
-      console.log(err);
+    if(libRole){
+      try {
+        console.log(formData)
+        e.preventDefault();
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+          mode: "cors",
+          body: JSON.stringify(formData),
+        };
+        await fetch(`${host}/Books`, options);
+    
+        window.location.href='http://localhost:8080'
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      alert("Librarian access required");
     }
   };
   return (

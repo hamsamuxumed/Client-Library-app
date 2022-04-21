@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import jwt_decode from 'jwt-decode';
 import {CreateBookForm} from '../CreateBookForm'
 import { SearchForm } from "../SearchForm";
 import { BookContainer } from "../BookContainer";
@@ -9,6 +10,7 @@ import { Login } from "../Login";
 export const NavBar = () => {
 
   const [ logged, setLogged ] = useState(false);
+  const [ libRole, setLibRole ] = useState(false);
 
   useEffect(() => {
 
@@ -33,6 +35,18 @@ export const NavBar = () => {
     setLogged(false);
   }
 
+  useEffect(() => {
+    const checkRole = () => {
+        if(localStorage.getItem('token')){
+            const decodedToken = jwt_decode(localStorage.getItem('token'));
+            decodedToken.role === 'librarian' && setLibRole(true);
+        }
+    }
+
+    checkRole();
+  },[])
+
+
   return (
     <Router>
       <div>
@@ -46,9 +60,9 @@ export const NavBar = () => {
                 <Nav.Link as={Link} to={"/"}>
                   Home
                 </Nav.Link>
-                <Nav.Link as={Link} to={"/CreateBookForm"}>
+                { libRole && <Nav.Link as={Link} to={"/CreateBookForm"}>
                   Add Book
-                </Nav.Link>
+                </Nav.Link> }
                 <Nav.Link as={Link} to={"/Collection"}>
                   Collection
                 </Nav.Link>

@@ -45,10 +45,10 @@ export const SearchForm = () => {
       </form>
 
 
-      <Grid container spacing={12}  direction="row"
-  alignItems="center"
-  justifyContent="center"
-  style={{ minHeight: '100vh' }}>
+      { !booksTitle && <Grid container spacing={12}  direction="row"
+            alignItems="center"
+            justifyContent="center"
+            style={{ minHeight: '100vh' }}>
         <Grid item xs={6} md={3}>
           <PreviewBooks image={book1}  title="Harry Potter Books" desc="Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling. The novels chronicle the lives of a young wizard, Harry Potter, and his friends Hermione Granger and Ron Weasley, all of whom are students at Hogwarts School of Witchcraft and Wizardry. The main story arc concerns Harry's struggle against Lord Voldemort, a dark wizard who intends to become immortal, overthrow the wizard governing body known as the Ministry of Magic and subjugate all wizards and Muggles (non-magical people)." />
         </Grid>
@@ -60,7 +60,7 @@ export const SearchForm = () => {
           <PreviewBooks image={book2} title="Robin Steven Books" desc="Stevens's eleven book series Murder Most Unladylike consists of schoolgirl detectives, Hazel Wong and Daisy Wells, as they solve murders, as well as personal things. Hazel falls in love with American boy Alexander Arcardy, as Daisy struggles with her feelings for other girls. She eventually comes out to Hazel as she falls for Martita Torrera in book seven, Death In The Spotlight, and begins a relationship with Amina from Deepdean during 'Death Sets Sail. As well as ten full-length murder mysteries, there are also six mini mysteries featuring these characters." />
         </Grid>
        
-      </Grid>
+      </Grid>}
       {booksTitle ? <BookContainer query={booksTitle}/> : <BookContainer />}
     </>
   );

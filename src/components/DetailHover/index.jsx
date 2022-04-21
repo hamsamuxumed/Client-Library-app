@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import './style.css';
 import { ReserveButton } from "../index";
 
-export const DetailHover = ({id, title, subtitle, date="n.d.", reserved, authors=["Unknown"], thumb, display}) => {
+export const DetailHover = ({id, title, subtitle, date="n.d.", reserved, authors=["Unknown"], thumb, display, logged}) => {
 
     const [ resStatus, setResStatus ] = useState(<h4 className="reserved">Reserved</h4>);
 
@@ -31,7 +31,7 @@ export const DetailHover = ({id, title, subtitle, date="n.d.", reserved, authors
                 <h4 className="popupDate">Published: {date}</h4>
                 {resStatus}
                 <img className="popupThumb" src={thumb}></img>
-                {!reserved && <ReserveButton id={id}/>}
+                {(!reserved && logged) && <ReserveButton id={id}/>}
             </div>)
     )
 }

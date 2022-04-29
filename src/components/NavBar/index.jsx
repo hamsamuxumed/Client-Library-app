@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import jwt_decode from 'jwt-decode';
-import {CreateBookForm} from '../CreateBookForm'
+import { CreateBookForm } from '../CreateBookForm'
 import { SearchForm } from "../SearchForm";
-import { BookContainer } from "../BookContainer";
+import { BookReservations} from "../BookReservations";
+import { UserCollection } from "../UserCollection";
 import { Login } from "../Login";
 
 export const NavBar = () => {
@@ -31,6 +32,7 @@ export const NavBar = () => {
 
   const logOut = () => {
     localStorage.removeItem('fname');
+    localStorage.removeItem('lname');
     localStorage.removeItem('token');
     setLogged(false);
   }
@@ -60,12 +62,15 @@ export const NavBar = () => {
                 <Nav.Link as={Link} to={"/"}>
                   Home
                 </Nav.Link>
-                { libRole && <Nav.Link as={Link} to={"/CreateBookForm"}>
+                { (libRole && logged) && <Nav.Link as={Link} to={"/CreateBookForm"}>
                   Add Book
                 </Nav.Link> }
-                <Nav.Link as={Link} to={"/Collection"}>
+                { logged && <Nav.Link as={Link} to={"/Collection"}>
                   Collection
-                </Nav.Link>
+                </Nav.Link> }
+                { (libRole && logged) && <Nav.Link as={Link} to={"/Reservations"}>
+                  Reservations
+                </Nav.Link> }
                 {!logged ? <Nav.Link as={Link} to={"/Login"}>
                   Login
                 </Nav.Link> :
@@ -82,7 +87,8 @@ export const NavBar = () => {
         <Routes>
           <Route exact path="/" element={<SearchForm />}/>
           <Route path="/CreateBookForm" element={<CreateBookForm/>}/>
-          <Route path="/Collection" element={<BookContainer/>}/>
+          <Route path="/Collection" element={<UserCollection/>}/>
+          <Route path="/Reservations" element={<BookReservations/>}/>
           <Route path="/Login" element={<Login/>}/>
         </Routes>
       </div>

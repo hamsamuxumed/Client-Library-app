@@ -9,5 +9,6 @@ export { ReserveButton } from './ReserveButton';
 export { RegForm } from './RegForm';
 export { LoginForm } from './LoginForm';
 export { Login } from './Login';
-
+export { UserCollection } from './UserCollection';
+export { BookReservations } from './BookReservations';
 

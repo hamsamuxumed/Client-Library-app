@@ -8,7 +8,7 @@ export const ReserveButton = ({id}) => {
         try {
             await axios.patch(`http://localhost:3000/books/${id}`, {
                 reserved: true,
-                reserved_by: `${localStorage.getItem('fname')} ${localStorage.getItem('lname')}`
+                reserved_by: `${localStorage.getItem('fname').toLowerCase()} ${localStorage.getItem('lname').toLowerCase()}`
             });
             window.location.reload();
         } catch(err) {

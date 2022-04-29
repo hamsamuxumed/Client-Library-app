@@ -21,8 +21,12 @@ export const BookReservations = () => {
 
 
     const renderBooks = () => books.map((r, i) => 
-        <tr key={i}>
-            <td><img src={r.imageLinks ? r.imageLinks.smallThumbnail : 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Book.svg/1200px-Book.svg.png' } alt="Book cover"></img></td>
+        <tr key={i} className='reserveTableRow'>
+            <td><img 
+                src={r.imageLinks ? r.imageLinks.smallThumbnail : 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Book.svg/1200px-Book.svg.png' } 
+                alt="Book cover"
+                className='bookThumb'>
+            </img></td>
             <td>{r.title}</td>
             <td>{r.authors ? r.authors.join(", ") : "Unknown"}</td>
             <td>{r.publishedDate}</td>
@@ -43,7 +47,7 @@ export const BookReservations = () => {
                         <th>Due Date</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className='reserveTableBody'>
                     {renderBooks()}
                 </tbody>
             </table>

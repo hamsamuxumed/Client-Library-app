@@ -23,6 +23,7 @@ export const RegForm = () => {
         console.log(data)
         const decodedToken = jwt_decode(data.token);
         localStorage.setItem('fname', decodedToken.fname);
+        localStorage.setItem('fname', decodedToken.lname);
         localStorage.setItem('token', data.token);
         window.location.reload();
     }

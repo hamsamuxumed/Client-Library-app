@@ -5,3 +5,12 @@
     margin-bottom: 50px;
     margin-top: 50px;
 }
+
+.bookDue {
+    text-align: center;
+}
+
+.dueToday {
+    font-weight: bold;
+    color: darkred;
+}

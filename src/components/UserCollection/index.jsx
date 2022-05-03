@@ -19,15 +19,33 @@ export const UserCollection = () => {
     } 
     fetchBooks();
 
+    const checkDate = (dueDate) => {
+        let today = new Date();
+        let currDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
 
-    const renderBooks = () => books.map((r, i) => <Book key={i} 
-                                                        id={r.id}
-                                                        title={r.title}
-                                                        subtitle={r.subtitle} 
-                                                        authors={r.authors}
-                                                        date={r.publishedDate}
-                                                        reserved={r.reserved}
-                                                        thumb={r.imageLinks.smallThumbnail}/>)
+        console.log(dueDate)
+        console.log(currDate.toDateString())
+
+        if(currDate.toDateString() === dueDate){
+            return <span className='dueToday'>TODAY</span>
+        } else {
+            return dueDate;
+        }
+    }
+
+    const renderBooks = () => books.map((r, i) => 
+    <div key={i}>
+        <Book 
+              id={r.id}
+              title={r.title}
+              subtitle={r.subtitle} 
+              authors={r.authors}
+              date={r.publishedDate}
+              reserved={r.reserved}
+              thumb={r.imageLinks.smallThumbnail}
+        />
+        <p className='bookDue'>Due: {checkDate(r.due_date)}</p>
+    </div>)
 
     return (
         <article className='bookDisplay'>
